@@ -19,3 +19,4 @@ for river_name in ["River Aire", "River Cam", "River Thames"]:
     station_names = sorted([s.name for s in stations_by_river_dict[river_name]])
     print(f"\nStations on {river_name}:")
     print(station_names) 
+
