@@ -58,7 +58,7 @@ def rivers_by_station_number(stations, N):
     river_dict = stations_by_river(stations)
 
     # Convert to list of (river, station_count) tuples
-    river_station_counts = [(river, len(station)) for river, stations in river_dict.items()]
+    river_station_counts = [(river, len(station)) for river, station in river_dict.items()]
 
     # Sort by station count in descending order
     river_station_counts.sort(key=lambda x: x[1], reverse=True)
