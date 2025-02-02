@@ -25,4 +25,4 @@ def stations_within_radius(stations, centre, r):
 
     Given a list of MonitoringStation objects, a centre, and a radius in kilometers.
     """
-    return [station for station in stations if haversine(stations.coord, centre) <= r]
+    return [station for station in stations if haversine(station.coord, centre) <= r]
