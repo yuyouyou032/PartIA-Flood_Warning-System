@@ -26,3 +26,24 @@ def stations_within_radius(stations, centre, r):
     Given a list of MonitoringStation objects, a centre, and a radius in kilometers.
     """
     return [station for station in stations if haversine(station.coord, centre) <= r]
+
+def rivers_with_station(stations):
+    """Returns a set of river names that have at least one monitoring station.
+
+    Given a list of MonitoringStation objects
+    """
+    return {station.river for station in stations if station.river}
+
+def stations_by_river(stations):
+    """Returns a dictionary mapping river names to a list of station objects.
+
+    Given a list of MonitoringStation objects
+    """
+    river_dict = {}
+    for station in stations:
+        if station.river:
+            if station.river not in river_dict:
+                river_dict[station.river] = []
+            river_dict[station.river].append(station)
+
+    return river_dict
