@@ -1,11 +1,10 @@
 from .utils import sorted_by_key  # noqa
 from haversine import haversine
 from .station import inconsistent_typical_range_stations, MonitoringStation
-
 from .stationdata import build_station_list, update_water_levels
 
 
-
+# stations for func testing
 stations = build_station_list()
 update_water_levels(stations)
 inconsistent_stations = inconsistent_typical_range_stations(stations)
@@ -20,3 +19,10 @@ def stations_level_over_threshold(stations, tol):
     return result_lst
 
 # print(stations_level_over_threshold(stations, 0.8))
+
+def stations_highest_rel_level(stations, N):
+    over_thresh_stations = stations_level_over_threshold(stations, 0)
+    ranked_over_thresh_stations = sorted_by_key(over_thresh_stations, 1, reverse=True)
+    return ranked_over_thresh_stations[:N]
+
+
