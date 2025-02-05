@@ -2,6 +2,12 @@ import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 from .datafetcher import fetch_measure_levels
 from .stationdata import build_station_list
+from .analysis import polyfit
+import numpy as np
+from matplotlib.dates import date2num, num2date
+
+from .flood import stations_highest_rel_level
+
 
 
 # station = build_station_list()[0]
@@ -25,3 +31,14 @@ def plot_water_levels(station, dates, levels):
     plt.show()
 
 # plot_water_levels(station, dates, levels)
+
+
+def plot_water_level_with_fit(station, dates, levels, p):
+    poly, d0 = polyfit(dates, levels, p)
+    print(poly)
+    plt.plot(d0, levels, '.')
+    x1 = np.linspace(d0[0], d0[-1], 30)
+    plt.plot(num2date(x1), poly(x1))
+    plt.title(station[0].name)
+    plt.xticks(rotation=45);
+    plt.show()
