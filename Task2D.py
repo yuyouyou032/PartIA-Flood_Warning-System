@@ -14,7 +14,7 @@ def run():
     stations = build_station_list()
 
     # Station name to find
-    station_name = "Cam"
+    station_name = "Hurn Court"
 
     # Find station
     station_cam = None
@@ -41,6 +41,7 @@ def run():
     dt = 2
     dates, levels = fetch_measure_levels(
         station_cam.measure_id, dt=datetime.timedelta(days=dt))
+    print(dates, levels)
 
     # Print level history
     for date, level in zip(dates, levels):

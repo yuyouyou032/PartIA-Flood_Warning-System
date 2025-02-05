@@ -132,7 +132,6 @@ def fetch_measure_levels(measure_id, dt):
 
     # Fetch data
     data = fetch(url)
-
     # Extract dates and levels
     dates, levels = [], []
     for measure in data['items']:
