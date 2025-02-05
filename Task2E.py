@@ -22,5 +22,5 @@ for i in highest_rel_level_stations:
 
 for station in highest_rel_level_stations:
     dates, levels = fetch_measure_levels(station[0].measure_id, dt=timedelta(days=dt))
-    print(levels)
+    # print(levels)
     plot_water_levels(station[0], dates, levels)
