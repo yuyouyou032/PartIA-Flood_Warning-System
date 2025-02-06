@@ -12,8 +12,7 @@ inconsistent_stations = inconsistent_typical_range_stations(stations)
 stations = [i for i in stations if i not in inconsistent_stations]
 
 over_tol_lst = stations_level_over_threshold(stations, 0.8)
-sorted_over_tol_lst = sorted_by_key(over_tol_lst, 1)
 
-for i in sorted_over_tol_lst:
+for i in over_tol_lst:
     print(i[0].name, i[1])
 

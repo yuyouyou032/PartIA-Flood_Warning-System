@@ -16,7 +16,8 @@ def stations_level_over_threshold(stations, tol):
         rel_data = i.relative_water_level()
         if rel_data > tol:
             result_lst.append((i, rel_data))
-    return result_lst
+    sorted_result_lst = sorted_by_key(result_lst, 1, reverse=True)
+    return sorted_result_lst
 
 # print(stations_level_over_threshold(stations, 0.8))
 
