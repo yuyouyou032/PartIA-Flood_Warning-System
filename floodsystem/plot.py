@@ -25,6 +25,11 @@ def plot_water_levels(station, dates, levels):
     plt.xticks(rotation=45);
     plt.title(station.name)
 
+
+    # annotate typical range low-high
+    plt.plot(dates, [station.typical_range[0] for i in range(len(dates))])
+    plt.plot(dates, [station.typical_range[1] for i in range(len(dates))])
+
     # Display plot
     plt.tight_layout()  # This makes sure plot does not cut off date labels
 
@@ -42,6 +47,9 @@ def plot_water_level_with_fit(station, dates, levels, p):
     plt.plot(num2date(d0), levels, '.')
     x1 = np.linspace(d0[0], d0[-1], 90)
     plt.plot(num2date(x1), poly(x1))
+
+    plt.xlabel('date')
+    plt.ylabel('water level (m)')
     plt.title(station[0].name)
     plt.xticks(rotation=45);
 
