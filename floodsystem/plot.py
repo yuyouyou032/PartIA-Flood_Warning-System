@@ -40,13 +40,13 @@ def plot_water_levels(station, dates, levels):
 
 def plot_water_level_with_fit(station, dates, levels, p):
     fig = plt.figure()
-    ax = fig.add_subplot(111)
+    # ax = fig.add_subplot(111)
 
     poly, d0 = polyfit(dates, levels, p)
     print(poly)
-    plt.plot(num2date(d0), levels, '.')
+    plt.plot(num2date(d0), levels, '.', label='actual water lvl')
     x1 = np.linspace(d0[0], d0[-1], 90)
-    plt.plot(num2date(x1), poly(x1))
+    plt.plot(num2date(x1), poly(x1), label='fitted lines')
 
     plt.xlabel('date')
     plt.ylabel('water level (m)')
@@ -55,7 +55,8 @@ def plot_water_level_with_fit(station, dates, levels, p):
 
 
     # annotate typical range low-high
-    plt.plot(num2date(d0), [station[0].typical_range[0] for i in range(len(d0))])
-    plt.plot(num2date(d0), [station[0].typical_range[1] for i in range(len(d0))])
+    plt.plot(num2date(d0), [station[0].typical_range[0] for i in range(len(d0))], label='low')
+    plt.plot(num2date(d0), [station[0].typical_range[1] for i in range(len(d0))], label='high')
 
+    plt.legend(loc='upper left')
     plt.show()
