@@ -1,5 +1,5 @@
 from .utils import sorted_by_key  # noqa
-from haversine import haversine
+# from haversine import haversine
 from .station import inconsistent_typical_range_stations, MonitoringStation
 from .stationdata import build_station_list, update_water_levels
 
