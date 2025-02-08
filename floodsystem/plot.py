@@ -17,7 +17,7 @@ from .flood import stations_highest_rel_level
 
 def plot_water_levels(station, dates, levels):
     # Plot
-    plt.plot(dates, levels)
+    plt.plot(dates, levels, label='water lvl')
 
     # Add axis labels, rotate date labels and add plot title
     plt.xlabel('date')
@@ -27,8 +27,8 @@ def plot_water_levels(station, dates, levels):
 
 
     # annotate typical range low-high
-    plt.plot(dates, [station.typical_range[0] for i in range(len(dates))])
-    plt.plot(dates, [station.typical_range[1] for i in range(len(dates))])
+    plt.plot(dates, [station.typical_range[0] for i in range(len(dates))], label='low')
+    plt.plot(dates, [station.typical_range[1] for i in range(len(dates))], label='high')
 
     # Display plot
     plt.tight_layout()  # This makes sure plot does not cut off date labels
