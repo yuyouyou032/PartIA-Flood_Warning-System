@@ -32,7 +32,7 @@ def plot_water_levels(station, dates, levels):
 
     # Display plot
     plt.tight_layout()  # This makes sure plot does not cut off date labels
-
+    plt.legend(loc='upper left')
     plt.show()
 
 # plot_water_levels(station, dates, levels)
