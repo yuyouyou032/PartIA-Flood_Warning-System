@@ -5,23 +5,19 @@ from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.plot import plot_water_levels, plot_water_level_with_fit
 from datetime import datetime, timedelta
 
-def run():
-    stations = build_station_list()
-    update_water_levels(stations)
-    inconsistent_stations = inconsistent_typical_range_stations(stations)
-    stations = [i for i in stations if i not in inconsistent_stations]
 
+stations = build_station_list()
+update_water_levels(stations)
+inconsistent_stations = inconsistent_typical_range_stations(stations)
+stations = [i for i in stations if i not in inconsistent_stations]
+station = stations[0]
 
-    highest_rel_level_stations = stations_highest_rel_level(stations, 1)
+def test_plot_water_levels():
     dt = 10
-
-
-    for station in highest_rel_level_stations:
-        dates, levels = fetch_measure_levels(station[0].measure_id, dt=timedelta(days=dt))
-        # print(levels)
-        plot_water_levels(station[0], dates, levels)
-        plot_water_level_with_fit(station[0], dates, levels, 2)
+    dates, levels = fetch_measure_levels(station.measure_id, dt=timedelta(days=dt))
+    plot_water_levels(station, dates, levels)
         
-
-if __name__ == "__main__":
-    run()
+def test_plot_water_level_with_fit():
+    dt = 10
+    dates, levels = fetch_measure_levels(station.measure_id, dt=timedelta(days=dt))
+    plot_water_level_with_fit(station, dates, levels, 2)

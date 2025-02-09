@@ -1,14 +1,7 @@
 from .utils import sorted_by_key  # noqa
 # from haversine import haversine
-from .station import inconsistent_typical_range_stations, MonitoringStation
-from .stationdata import build_station_list, update_water_levels
 
 
-# stations for func testing
-stations = build_station_list()
-update_water_levels(stations)
-inconsistent_stations = inconsistent_typical_range_stations(stations)
-stations = [i for i in stations if i not in inconsistent_stations]
 
 def stations_level_over_threshold(stations, tol):
     result_lst = []

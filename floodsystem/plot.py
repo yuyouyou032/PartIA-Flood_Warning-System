@@ -50,13 +50,13 @@ def plot_water_level_with_fit(station, dates, levels, p):
 
     plt.xlabel('date')
     plt.ylabel('water level (m)')
-    plt.title(station[0].name)
+    plt.title(station.name)
     plt.xticks(rotation=45);
 
 
     # annotate typical range low-high
-    plt.plot(num2date(d0), [station[0].typical_range[0] for i in range(len(d0))], label='low')
-    plt.plot(num2date(d0), [station[0].typical_range[1] for i in range(len(d0))], label='high')
+    plt.plot(num2date(d0), [station.typical_range[0] for i in range(len(d0))], label='low')
+    plt.plot(num2date(d0), [station.typical_range[1] for i in range(len(d0))], label='high')
 
     plt.legend(loc='upper left')
     plt.show()
