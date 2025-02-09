@@ -1,11 +1,7 @@
 import numpy as np
 from datetime import datetime, timedelta
-from matplotlib.dates import date2num
 from floodsystem.analysis import polyfit
 
-
-import matplotlib.pyplot as plt
-from haversine import haversine
 from floodsystem.station import inconsistent_typical_range_stations, MonitoringStation
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.flood import stations_highest_rel_level
@@ -16,11 +12,13 @@ stations = build_station_list()
 update_water_levels(stations)
 inconsistent_stations = inconsistent_typical_range_stations(stations)
 stations = [i for i in stations if i not in inconsistent_stations]
-highest_rel_level_stations = stations_highest_rel_level(stations, 1)
+highest_rel_level_stations = stations_highest_rel_level(stations, 5)
 dt = 2
 
-for station in highest_rel_level_stations:
-    dates, levels = fetch_measure_levels(station[0].measure_id, dt=timedelta(days=dt))
-    assert len(dates) == len(levels)
-    poly, d0 = polyfit(dates, levels, 3)
-    assert type(poly) == np.poly1d
+def test_poly_fit():
+
+    for station in highest_rel_level_stations:
+        dates, levels = fetch_measure_levels(station[0].measure_id, dt=timedelta(days=dt))
+        assert len(dates) == len(levels)
+        poly, d0 = polyfit(dates, levels, 3)
+        assert type(poly) == np.poly1d
