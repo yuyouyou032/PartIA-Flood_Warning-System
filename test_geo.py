@@ -10,6 +10,7 @@ def mock_stations():
         MonitoringStation("s3", "m3", "Station 3", (52.206, 0.122), None, "River B", "Town C"),
         MonitoringStation("s4", "m4", "Station 4", (52.207, 0.123), None, "River C", "Town D"),
     ]
+mock_stations = mock_stations()
 def test_stations_by_distance(mock_stations):
     p = (52.206, 0.122)  # Reference point
     result = stations_by_distance(mock_stations, p)
