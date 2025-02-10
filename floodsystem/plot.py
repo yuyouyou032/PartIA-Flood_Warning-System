@@ -16,6 +16,8 @@ from .flood import stations_highest_rel_level
 
 
 def plot_water_levels(station, dates, levels):
+    '''Plots water levels agianst dates for a particular station'''
+
     # Plot
     plt.plot(dates, levels, label='water lvl')
 
@@ -39,6 +41,9 @@ def plot_water_levels(station, dates, levels):
 
 
 def plot_water_level_with_fit(station, dates, levels, p):
+    '''Plots water levels agianst dates for a particular station, and add a fit curve with
+        the degree of fit specified by p'''
+
     fig = plt.figure()
     # ax = fig.add_subplot(111)
 

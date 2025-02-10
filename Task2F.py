@@ -6,6 +6,7 @@ from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.plot import plot_water_level_with_fit
 
 def run():
+    print(plot_water_level_with_fit.__doc__)
     stations = build_station_list()
     update_water_levels(stations)
     inconsistent_stations = inconsistent_typical_range_stations(stations)
